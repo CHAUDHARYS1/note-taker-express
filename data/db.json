@@ -1,8 +1,1 @@
-{
-    "notes": [
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
-]
-}
+[{"id":"0","title":"Test Title","text":"Test text"},{"title":"Test","text":"123","id":"1"},{"title":"asdasd","text":"asasdsad","id":"2"},{"title":"git sas","text":"aadasd","id":"3"},{"title":"asdasd","text":"adadsads","id":"4"},{"title":"askadkad","text":"asdasdk","id":"5"}]
