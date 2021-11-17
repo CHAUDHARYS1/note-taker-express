@@ -17,7 +17,7 @@ router.get('/notes', (req, res) => {
     fs.readFile(
         path.join(__dirname, '../../data/db.json'), (err, data) => {
             if (err) throw err;
-            console.log(data);
+            // console.log(data);
             const notes = JSON.parse(data);
             res.json(notes);
         });
@@ -29,12 +29,28 @@ router.get('/notes', (req, res) => {
 router.post('/notes', (req, res) => {
 
     req.body.id = notes.length.toString();
-    console.log(req.body);
+    // console.log(req.body);
     if (!validateNote(req.body)) {
         res.status(400).send('This note is not properly formated.');
     } else {
         createNewNote(req.body).then(note => res.json(note));
     }
+});
+
+// DELETE a note
+router.delete('/notes/:id', (req, res) => {
+    let id = req.params.id;
+    let notes = req.body;
+    return this.notes(notes).then(notes => notes.filter((note) => note.id != id).then((filter) => createNewNote(filter)));
+    
+    // for (let index = 0; index < notes.length; index++) {
+    //    if(notes[index].id === id){
+    //        fs.writeFileSync(
+    //            path.join(__dirname, '../../data/db.json')
+    //        );
+    //     }
+    // }
+
 });
 
 module.exports = router;
